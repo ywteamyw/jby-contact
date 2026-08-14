@@ -184,11 +184,11 @@ input,select,textarea{font-family:inherit}
   background:linear-gradient(180deg,rgba(13,27,40,0.55) 0%,rgba(13,27,40,0.12) 30%,rgba(13,27,40,0.30) 70%,rgba(13,27,40,0.74) 100%)}
 .hero-contact .hc-inner{position:absolute;left:0;right:0;bottom:0;z-index:2;
   max-width:1440px;margin:0 auto;padding:0 40px 64px}
-.hero-contact h1{font-family:'Mesmerize',sans-serif;font-weight:300;font-size:48px;line-height:56px;letter-spacing:0;
+.hero-contact h1{font-family:'Mesmerize',sans-serif;font-weight:300;font-size:32px;line-height:40px;letter-spacing:0;
   text-transform:uppercase;margin:0;color:#fff}
 .hero-contact p{font-family:'Myriad Pro',sans-serif;font-weight:300;font-size:20px;line-height:30px;
   color:rgba(255,255,255,0.92);margin:18px 0 0;max-width:640px}
-@media(max-width:1024px){.hero-contact{height:58vh;min-height:420px}.hero-contact h1{font-size:34px;line-height:42px}
+@media(max-width:1024px){.hero-contact{height:58vh;min-height:420px}.hero-contact h1{font-size:26px;line-height:34px}
   .hero-contact p{font-size:18px;line-height:27px}.hero-contact .hc-inner{padding:0 24px 44px}}
 
 /* ====================================================================== */
@@ -199,17 +199,14 @@ input,select,textarea{font-family:inherit}
   color:var(--ink);text-transform:uppercase;margin:0}
 .loc-head p{font-family:'Myriad Pro',sans-serif;font-weight:300;font-size:18px;line-height:28px;color:var(--mute);
   margin:14px 0 0;max-width:760px}
-.loc-filter{display:flex;flex-wrap:wrap;gap:28px;align-items:center;margin:36px 0 0;
-  border-bottom:0.5px solid var(--line)}
-.loc-filter button{font-family:'Mesmerize',sans-serif;font-weight:300;font-size:15px;letter-spacing:0.04em;
-  text-transform:uppercase;color:var(--mute);background:transparent;border:0;padding:6px 2px 16px;cursor:pointer;
-  position:relative;transition:color .25s;white-space:nowrap}
-.loc-filter button::after{content:"";position:absolute;left:2px;right:2px;bottom:-1px;height:2px;background:var(--navy);
-  transform:scaleX(0);transform-origin:center;transition:transform .35s cubic-bezier(0.22,1,0.36,1)}
-.loc-filter button:hover{color:var(--ink)}
-.loc-filter button.active{color:var(--navy)}
-.loc-filter button.active::after{transform:scaleX(1)}
-.loc-filter .count{font-size:11px;opacity:0.55;margin-left:5px;vertical-align:2px}
+.loc-filter{display:flex;flex-wrap:wrap;gap:34px;align-items:baseline;margin:36px 0 0;padding-bottom:0}
+.loc-filter button{font-family:'Myriad Pro',sans-serif;font-size:16px;line-height:1.3;color:#5f5f68;font-weight:400;
+  display:inline-flex;align-items:baseline;gap:8px;background:transparent;border:0;padding:0 0 12px;
+  border-bottom:2px solid transparent;cursor:pointer;transition:color .18s,border-color .18s;white-space:nowrap}
+.loc-filter button .n{font-size:16px;color:#9a9aa2;font-variant-numeric:tabular-nums;transition:color .18s}
+.loc-filter button:hover{color:#111}
+.loc-filter button.active{color:#111;border-bottom-color:#111}
+.loc-filter button.active .n{color:#111}
 
 .loc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px 28px;margin-top:44px}
 .loc-card{display:flex;flex-direction:column;background:#fff;border-radius:2px;overflow:hidden;cursor:pointer;
@@ -412,11 +409,11 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{
     <h2>Our locations</h2>
   </div>
   <div class="loc-filter" role="tablist" aria-label="Filter locations by type">
-    <button class="active" data-filter="all">All <span class="count">9</span></button>
-    <button data-filter="service">Service Center <span class="count">8</span></button>
-    <button data-filter="sales">Sales Center <span class="count">9</span></button>
-    <button data-filter="marina">Marina <span class="count">4</span></button>
-    <button data-filter="full">Full Service Location <span class="count">1</span></button>
+    <button class="active" data-filter="all" role="tab" aria-selected="true"><span class="lbl">All</span><span class="n">9</span></button>
+    <button data-filter="service" role="tab" aria-selected="false"><span class="lbl">Service Center</span><span class="n">8</span></button>
+    <button data-filter="sales" role="tab" aria-selected="false"><span class="lbl">Sales Center</span><span class="n">9</span></button>
+    <button data-filter="marina" role="tab" aria-selected="false"><span class="lbl">Marina</span><span class="n">4</span></button>
+    <button data-filter="full" role="tab" aria-selected="false"><span class="lbl">Full Service Location</span><span class="n">1</span></button>
   </div>
   <div class="loc-grid" id="loc-grid">
 
@@ -682,8 +679,8 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{
     var tabs = Array.prototype.slice.call(document.querySelectorAll('.loc-filter button'));
     tabs.forEach(function(tab){
       tab.addEventListener('click', function(){
-        tabs.forEach(function(t){ t.classList.remove('active'); });
-        tab.classList.add('active');
+        tabs.forEach(function(t){ t.classList.remove('active'); t.setAttribute('aria-selected','false'); });
+        tab.classList.add('active'); tab.setAttribute('aria-selected','true');
         var f = tab.getAttribute('data-filter');
         cards.forEach(function(c){
           var types = (c.getAttribute('data-types') || '').split(' ');
