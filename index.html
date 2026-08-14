@@ -114,8 +114,8 @@ input,select,textarea{font-family:inherit}
 .social{display:flex;gap:16px;align-items:center;margin-top:12px}
 .social a{width:28px;height:28px;border-radius:7px;background:var(--ink);color:#fff;
   display:flex;align-items:center;justify-content:center;
-  transition:transform .35s cubic-bezier(0.22,1,0.36,1), opacity .25s}
-.social a:hover{transform:translateY(-3px);opacity:0.85}
+  transition:background .2s}
+.social a:hover{background:var(--navy)}
 .social a svg{width:16px;height:16px;display:block;fill:currentColor}
 
 /* Photo — hover zoom (same feel as portfolio/pillars) */
@@ -194,7 +194,7 @@ input,select,textarea{font-family:inherit}
 /* ====================================================================== */
 /* OUR LOCATIONS — all offices + type filter                              */
 /* ====================================================================== */
-.locations{max-width:1440px;margin:0 auto;padding:120px 40px 0}
+.locations{max-width:1440px;margin:0 auto;padding:64px 40px 0}
 .loc-head h2{font-family:'Mesmerize',sans-serif;font-weight:300;font-size:32px;line-height:40px;letter-spacing:0;
   color:var(--ink);text-transform:uppercase;margin:0}
 .loc-head p{font-family:'Myriad Pro',sans-serif;font-weight:300;font-size:18px;line-height:28px;color:var(--mute);
@@ -240,7 +240,7 @@ input,select,textarea{font-family:inherit}
 .loc-card:hover .lc-cta{gap:10px}
 .loc-card.hide{display:none}
 @media(max-width:1100px){.loc-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:680px){.loc-grid{grid-template-columns:1fr}.locations{padding:80px 24px 0}.loc-filter{gap:16px}
+@media(max-width:680px){.loc-grid{grid-template-columns:1fr}.locations{padding:44px 24px 0}.loc-filter{gap:16px}
   .loc-head h2{font-size:26px;line-height:34px}}
 
 /* ====================================================================== */
@@ -267,9 +267,9 @@ footer{background:var(--section);padding:40px 40px 80px;color:var(--mute);font-s
 .foot-col p a:hover{color:var(--navy)}
 .foot-social{display:flex;gap:16px;margin-top:0}
 .foot-social a{width:28px;height:28px;border-radius:7px;background:var(--ink);color:#fff;
-  display:flex;align-items:center;justify-content:center;transition:transform .35s cubic-bezier(0.22,1,0.36,1),opacity .25s}
+  display:flex;align-items:center;justify-content:center;transition:background .2s}
 .foot-social a svg{width:16px;height:16px;display:block;fill:currentColor}
-.foot-social a:hover{transform:translateY(-3px);opacity:0.85}
+.foot-social a:hover{background:var(--navy)}
 .back-top{position:absolute;right:40px;top:152px;width:40px;height:40px;border:0;
   background:rgba(0,0,0,0.7);border-radius:2px;cursor:pointer;
   display:flex;align-items:center;justify-content:center;color:#fff;transition:background .2s}
