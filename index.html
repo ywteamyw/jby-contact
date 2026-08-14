@@ -151,7 +151,9 @@ input,select,textarea{font-family:inherit}
 .ci-ms-ph{font-family:'Myriad Pro',sans-serif;font-weight:300;font-size:16px;line-height:24px;color:var(--placeholder)}
 .ci-ms-tags{display:flex;flex-wrap:wrap;gap:6px}
 .ci-ms-tag{display:inline-flex;align-items:center;gap:6px;background:var(--navy);color:#fff;border-radius:2px;padding:4px 8px;
-  font-family:'Mesmerize',sans-serif;font-weight:300;font-size:12px;text-transform:uppercase;letter-spacing:0.02em}
+  font-family:'Mesmerize',sans-serif;font-weight:300;font-size:12px;text-transform:uppercase;letter-spacing:0.02em;
+  white-space:nowrap;max-width:100%}
+.ci-ms-tag span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .ci-ms-tag b{cursor:pointer;font-weight:400;font-size:15px;line-height:1;opacity:.8}
 .ci-ms-tag b:hover{opacity:1}
 .ci-ms-caret{position:absolute;right:2px;top:9px;width:8px;height:8px;pointer-events:none;
@@ -662,7 +664,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{
     var sel  = '';
     function label(v){ for (var i=0;i<OPTS.length;i++){ if (OPTS[i].v===v) return OPTS[i].l; } return ''; }
     function render(){
-      tags.innerHTML = sel ? '<span class="ci-ms-tag">'+label(sel)+'<b data-rm="1" aria-label="Clear selection">&times;</b></span>' : '';
+      tags.innerHTML = sel ? '<span class="ci-ms-tag"><span>'+label(sel)+'</span><b data-rm="1" aria-label="Clear selection">&times;</b></span>' : '';
       ph.style.display = sel ? 'none' : '';
       menu.innerHTML = OPTS.map(function(o){
         var on = o.v===sel;
